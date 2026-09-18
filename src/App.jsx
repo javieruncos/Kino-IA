@@ -2,6 +2,7 @@ import Hero from "./components/sections/Hero.jsx";
 import ProductStatement from "./components/sections/ProductStatement.jsx";
 import AICanvas from "./components/sections/AICanvas.jsx";
 import FeatureStorytelling from "./components/sections/FeatureStorytelling.jsx";
+import GenerationWorkflow from "./components/sections/GenerationWorkflow.jsx";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <ProductStatement />
       <AICanvas />
       <FeatureStorytelling />
+      <GenerationWorkflow />
     </main>
   );
 }
