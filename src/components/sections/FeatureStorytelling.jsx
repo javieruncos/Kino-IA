@@ -102,15 +102,120 @@ function OverlayComposition() {
   );
 }
 
-function SceneVariant({ id, alive }) {
+/* Capas concepto por capítulo: enriquecen SceneBase sin romper su universo.
+   Solo geometría mate + mono tenue. Sin glow, sin HUD. */
+function FrameCamera() {
   return (
-    <>
-      <SceneBase />
-      {id === "camera" ? <OverlayCamera /> : null}
-      {id === "light" ? <OverlayLight /> : null}
-      {id === "motion" ? <OverlayMotion alive={alive} /> : null}
-      {id === "composition" ? <OverlayComposition /> : null}
-    </>
+    <div aria-hidden="true" className="absolute inset-0">
+      <div className="absolute inset-y-0 left-0 w-[22%] border-r border-white/5 bg-[linear-gradient(180deg,#0a1216_0%,#04080a_100%)]" />
+      <div className="absolute inset-y-0 right-0 w-[18%] border-l border-white/5 bg-[linear-gradient(180deg,#0a1216_0%,#04080a_100%)]" />
+      <div className="absolute left-1/2 top-[58%] h-[60%] w-px origin-top -rotate-[28deg] bg-white/[0.07]" />
+      <div className="absolute left-1/2 top-[58%] h-[60%] w-px origin-top rotate-[28deg] bg-white/[0.07]" />
+      <div className="absolute bottom-[30%] left-1/2 h-16 w-5 -translate-x-1/2 rounded-t-full border border-white/10 bg-black/80" />
+      <div className="absolute bottom-[10%] left-1/2 flex -translate-x-1/2 gap-3 font-mono text-[9px] tracking-[0.2em]">
+        <span className="text-acid/80">35</span>
+        <span className="text-white/30">50</span>
+        <span className="text-white/30">85</span>
+      </div>
+      <OverlayCamera />
+    </div>
+  );
+}
+
+function FrameLight() {
+  return (
+    <div aria-hidden="true" className="absolute inset-0">
+      <div className="absolute inset-y-0 left-0 w-[62%] bg-[linear-gradient(100deg,rgba(2,5,6,0.85)_0%,transparent_100%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_30%_60%_at_86%_45%,rgba(255,190,120,0.2),transparent_65%)]" />
+      <div className="absolute right-[14%] top-[18%] h-[46%] w-1 bg-[rgba(255,190,120,0.5)] blur-[2px]" />
+      <div className="absolute bottom-[28%] left-[58%] h-20 w-6 rounded-t-full bg-[#0a0f12]" />
+      <div className="absolute bottom-[28%] left-[58%] ml-6 h-20 w-px bg-[rgba(255,200,140,0.6)]" />
+      <div className="absolute bottom-[24%] right-[8%] h-px w-24 bg-[linear-gradient(90deg,transparent,rgba(255,190,120,0.35))]" />
+      <OverlayLight />
+    </div>
+  );
+}
+
+function FrameMotion({ alive }) {
+  return (
+    <div aria-hidden="true" className="absolute inset-0 overflow-hidden">
+      <div className="absolute bottom-[38%] left-[12%] h-px w-40 bg-gradient-to-r from-transparent via-cream/25 to-transparent" />
+      <motion.div
+        animate={alive ? { x: [0, 48, 0] } : { x: 0 }}
+        transition={
+          alive
+            ? { duration: 7, repeat: Infinity, ease: "easeInOut" }
+            : { duration: 0 }
+        }
+        className="absolute bottom-[32%] left-[24%] h-px w-56 bg-gradient-to-r from-transparent via-cream/50 to-transparent"
+      />
+      <div className="absolute bottom-[27%] left-[38%] h-px w-28 bg-gradient-to-r from-transparent via-cream/20 to-transparent" />
+      <div className="absolute bottom-[24%] left-1/2 h-5 w-32 -translate-x-1/2 rounded-t-full bg-[#0d1a1f] opacity-40" />
+      <div className="absolute bottom-[24%] left-1/2 h-5 w-32 -translate-x-[calc(50%-2rem)] rounded-t-full bg-[#12242a]" />
+      <OverlayMotion alive={alive} />
+    </div>
+  );
+}
+
+function FrameComposition() {
+  return (
+    <div aria-hidden="true" className="absolute inset-0">
+      <div className="absolute inset-y-0 left-0 w-[55%] bg-[linear-gradient(90deg,rgba(2,5,6,0.6),transparent)]" />
+      <div className="absolute left-2/3 top-1/3 h-14 w-9 -translate-x-1/2 -translate-y-1/2 rounded-[2px] border border-white/15 bg-black/60" />
+      <div className="absolute left-[8%] top-[12%] h-4 w-4 border-l border-t border-white/20" />
+      <div className="absolute right-[8%] top-[12%] h-4 w-4 border-r border-t border-white/20" />
+      <div className="absolute bottom-[12%] left-[8%] h-4 w-4 border-b border-l border-white/20" />
+      <div className="absolute bottom-[12%] right-[8%] h-4 w-4 border-b border-r border-white/20" />
+      <OverlayComposition />
+    </div>
+  );
+}
+
+/* Frame cinematográfico por capítulo: placeholder CSS preparado para
+   recibir una imagen real sin cambiar el layout.
+   FUTURO: reemplazar las capas CSS por
+   <img src={chapter.image} alt={chapter.imageAlt}
+     className="absolute inset-0 h-full w-full object-cover"
+     loading="lazy" decoding="async" /> */
+function CinematicFrame({ chapter, alive, aspect = "aspect-[21/9]" }) {
+  return (
+    <figure>
+      <div
+        className={`relative w-full ${aspect} overflow-hidden rounded-xl border border-line bg-black`}
+      >
+        <SceneBase />
+        {chapter.id === "camera" ? <FrameCamera /> : null}
+        {chapter.id === "light" ? <FrameLight /> : null}
+        {chapter.id === "motion" ? <FrameMotion alive={alive} /> : null}
+        {chapter.id === "composition" ? <FrameComposition /> : null}
+      </div>
+      <figcaption className="mt-3 font-mono text-[10px] tracking-[0.2em] text-white/35">
+        REF / {chapter.name} — {chapter.meta[chapter.meta.length - 1]}
+      </figcaption>
+    </figure>
+  );
+}
+
+/* Bloque técnico editorial: voz secundaria junto a la descripción.
+   Sin fondos, sin cards, sin HUD — solo borde vertical y mono. */
+function TechnicalDirection({ chapter }) {
+  const tokens = chapter.meta;
+  const head = tokens.slice(0, -1).join("  /  ");
+  const tail = tokens[tokens.length - 1];
+  return (
+    <div className="border-l border-line pl-5 lg:pl-6">
+      <p className="font-mono text-[10px] tracking-[0.2em] text-white/35">
+        TECHNICAL DIRECTION
+      </p>
+      {head ? (
+        <p className="mt-3 font-mono text-[11px] tracking-[0.14em] text-cream/80">
+          {head}
+        </p>
+      ) : null}
+      <p className="mt-2 font-mono text-[11px] tracking-[0.14em] text-cream/80">
+        {tail}
+      </p>
+    </div>
   );
 }
 
@@ -129,25 +234,39 @@ function StaticStory({ animated }) {
           aria-labelledby={`chapter-title-${chapter.id}`}
           className="border-t border-line py-12 first:border-t-0 first:pt-2 md:py-16"
         >
-          <p className="font-mono text-[11px] tracking-[0.22em] text-muted">
-            {chapter.index} / {chapter.name}
-            <span className="ml-3 text-white/30">{chapter.question}</span>
-          </p>
-          <div className="relative mt-6 aspect-video overflow-hidden rounded-lg border border-line bg-black">
-            <SceneVariant id={chapter.id} alive={animated} />
+          <div className="lg:grid lg:grid-cols-12 lg:items-center lg:gap-10">
+            <div className="lg:col-span-5">
+              <p className="font-mono text-[11px] tracking-[0.22em] text-muted">
+                {chapter.index} / {chapter.name}
+                <span className="ml-3 tracking-[0.08em] text-white/30">
+                  {chapter.question}
+                </span>
+              </p>
+              <h3
+                id={`chapter-title-${chapter.id}`}
+                className="mt-6 font-display text-3xl font-medium uppercase leading-[1.05] tracking-[-0.01em] text-cream md:text-4xl"
+              >
+                {chapter.title}
+              </h3>
+              <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-12 md:gap-6 lg:block lg:space-y-6">
+                <p className="text-base leading-relaxed text-muted md:col-span-7">
+                  {chapter.copy}
+                </p>
+            <div className="md:col-span-5">
+              <TechnicalDirection chapter={chapter} />
+            </div>
           </div>
-          <h3
-            id={`chapter-title-${chapter.id}`}
-            className="mt-6 font-display text-3xl font-medium uppercase leading-[1.05] tracking-[-0.01em] text-cream md:text-4xl"
-          >
-            {chapter.title}
-          </h3>
-          <p className="mt-3 max-w-md text-base leading-relaxed text-muted">
-            {chapter.copy}
-          </p>
-          <p className="mt-5 border-t border-line pt-4 font-mono text-[11px] tracking-[0.18em] text-white/40">
-            {chapter.meta.join("  ·  ")}
-          </p>
+        </div>
+        <div className="lg:col-span-7">
+          <div className="mt-8 md:mt-10 lg:mt-0">
+            <CinematicFrame
+              chapter={chapter}
+              alive={animated}
+              aspect="aspect-video"
+            />
+          </div>
+        </div>
+          </div>
           <span className="sr-only">Capítulo {i + 1} de 4</span>
         </motion.article>
       ))}
@@ -183,113 +302,94 @@ function StickyStory() {
 
   return (
     <div ref={trackRef} className="relative">
-      <div className="grid lg:grid-cols-12 lg:gap-10">
-        <div className="lg:col-span-5">
-          <div className="sticky top-24 z-10 border-b border-line bg-ink/95 py-4 backdrop-blur-sm">
-            <div
-              aria-hidden="true"
-              className="relative h-px w-full bg-white/10"
+      <div className="sticky top-24 z-10 border-b border-line bg-ink/95 py-4 backdrop-blur-sm">
+        <div
+          aria-hidden="true"
+          className="relative h-px w-full bg-white/10"
+        >
+          <motion.div
+            animate={{ scaleX: smooth }}
+            className="h-px w-full origin-left bg-acid/70"
+          />
+        </div>
+        <nav aria-label="Capítulos de dirección" className="mt-3 flex gap-5">
+          {CHAPTERS.map((chapter, i) => (
+            <button
+              key={chapter.id}
+              type="button"
+              onClick={() => goTo(i)}
+              aria-current={active === i ? "true" : undefined}
+              aria-label={`Ir al capítulo ${chapter.name}`}
+              className={
+                active === i
+                  ? "font-mono text-[11px] tracking-[0.16em] text-acid"
+                  : "font-mono text-[11px] tracking-[0.16em] text-white/35 transition-colors hover:text-cream"
+              }
             >
-              <motion.div
-                animate={{ scaleX: smooth }}
-                className="h-px w-full origin-left bg-acid/70"
-              />
-            </div>
-            <nav aria-label="Capítulos de dirección" className="mt-3 flex gap-6">
-              {CHAPTERS.map((chapter, i) => (
-                <button
-                  key={chapter.id}
-                  type="button"
-                  onClick={() => goTo(i)}
-                  aria-current={active === i ? "true" : undefined}
-                  className={
-                    active === i
-                      ? "font-mono text-[11px] tracking-[0.2em] text-acid"
-                      : "font-mono text-[11px] tracking-[0.2em] text-white/35 transition-colors hover:text-cream"
-                  }
-                >
-                  {chapter.index}
-                </button>
-              ))}
-            </nav>
-          </div>
-
-          <ol>
-            {CHAPTERS.map((chapter, i) => (
-              <motion.li
-                key={chapter.id}
-                ref={(node) => {
-                  chapterRefs.current[i] = node;
-                }}
-                animate={{ opacity: active === i ? 1 : 0.35 }}
-                transition={{ duration: 0.5, ease: "easeOut" }}
-                aria-labelledby={`chapter-title-${chapter.id}`}
-                className="flex min-h-[85vh] flex-col justify-center border-b border-line py-10"
+              {chapter.index}
+              <span
+                className={
+                  active === i ? "ml-2 text-cream" : "ml-2 text-cream/50"
+                }
               >
-                <p className="font-mono text-[11px] tracking-[0.22em] text-muted">
-                  {chapter.index} /{" "}
-                  <span
-                    className={active === i ? "text-acid" : "text-cream/70"}
-                  >
-                    {chapter.name}
-                  </span>
-                </p>
+                {chapter.name}
+              </span>
+            </button>
+          ))}
+        </nav>
+      </div>
+
+      <ol className="mt-4">
+        {CHAPTERS.map((chapter, i) => (
+          <motion.li
+            key={chapter.id}
+            ref={(node) => {
+              chapterRefs.current[i] = node;
+            }}
+            animate={{ opacity: active === i ? 1 : 0.35 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            aria-labelledby={`chapter-title-${chapter.id}`}
+            className="flex flex-col justify-start border-b border-line py-14"
+          >
+            <div className="flex items-baseline justify-between gap-6">
+              <p className="font-mono text-[11px] tracking-[0.22em] text-muted">
+                {chapter.index} /{" "}
+                <span
+                  className={active === i ? "text-acid" : "text-cream/70"}
+                >
+                  {chapter.name}
+                </span>
+              </p>
+              <p className="shrink-0 font-mono text-[11px] tracking-[0.08em] text-white/30">
+                {chapter.question}
+              </p>
+            </div>
+            <div className="mt-8 grid grid-cols-12 items-center gap-10">
+              <div className="col-span-5">
                 <h3
                   id={`chapter-title-${chapter.id}`}
-                  className="mt-5 font-display text-[clamp(2rem,3.5vw,3.25rem)] font-medium uppercase leading-[1.02] tracking-[-0.015em] text-cream"
+                  className="font-display text-[clamp(2.25rem,3.2vw,3.5rem)] font-medium uppercase leading-[1.02] tracking-[-0.015em] text-cream"
                 >
                   {chapter.title}
                 </h3>
-                <p className="mt-2 font-mono text-[11px] tracking-[0.18em] text-white/35">
-                  {chapter.question}
-                </p>
-                <p className="mt-5 max-w-sm text-base leading-relaxed text-muted">
+                <p className="mt-5 text-base leading-relaxed text-muted">
                   {chapter.copy}
                 </p>
-                <p className="mt-6 font-mono text-[11px] tracking-[0.18em] text-white/40">
-                  {chapter.meta.join("  ·  ")}
-                </p>
-              </motion.li>
-            ))}
-          </ol>
-        </div>
-
-        <div className="lg:col-span-7">
-          <div className="sticky top-[10vh] flex h-[76vh] flex-col">
-            <div className="relative flex-1 overflow-hidden rounded-xl border border-line bg-black shadow-[0_40px_120px_-30px_rgba(0,0,0,0.9)]">
-              {CHAPTERS.map((chapter, i) => (
-                <motion.div
-                  key={chapter.id}
-                  aria-hidden={active !== i}
-                  animate={
-                    active === i
-                      ? { opacity: 1, scale: 1 }
-                      : { opacity: 0, scale: 1.05 }
-                  }
-                  transition={{ duration: 0.6, ease: "easeOut" }}
-                  className="absolute inset-0"
-                >
-                  <SceneVariant id={chapter.id} alive={active === i} />
-                </motion.div>
-              ))}
+                <div className="mt-8">
+                  <TechnicalDirection chapter={chapter} />
+                </div>
+              </div>
+              <div className="col-span-7">
+                <CinematicFrame
+                  chapter={chapter}
+                  alive={active === i}
+                  aspect="aspect-video"
+                />
+              </div>
             </div>
-            <div className="mt-4 flex items-center justify-between border-t border-line pt-4">
-              <motion.p
-                key={active}
-                initial={{ opacity: 0, y: 6 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, ease: "easeOut" }}
-                className="font-mono text-[11px] tracking-[0.2em] text-muted"
-              >
-                {CHAPTERS[active].frame.join("   ")}
-              </motion.p>
-              <p className="font-mono text-[11px] tracking-[0.2em] text-acid">
-                {CHAPTERS[active].index} / 04
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+          </motion.li>
+        ))}
+      </ol>
     </div>
   );
 }
