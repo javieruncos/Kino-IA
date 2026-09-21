@@ -334,7 +334,7 @@ export default function GenerationWorkflow() {
     <section
       id="process"
       aria-labelledby="process-title"
-      className="relative overflow-clip border-t border-line bg-ink text-cream"
+      className="relative scroll-mt-20 overflow-clip border-t border-line bg-ink text-cream"
     >
       <div className="mx-auto max-w-[1440px] px-6 py-24 md:px-10 md:py-32 lg:px-14 lg:py-40">
         <motion.div

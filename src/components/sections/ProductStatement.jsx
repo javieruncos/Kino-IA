@@ -34,7 +34,7 @@ export default function ProductStatement() {
     <section
       id="philosophy"
       aria-labelledby="statement-title"
-      className="relative border-t border-line bg-ink text-cream"
+      className="relative scroll-mt-20 border-t border-line bg-ink text-cream"
     >
       <div className="mx-auto grid max-w-[1440px] grid-cols-1 gap-14 px-6 py-24 md:px-10 md:py-36 lg:grid-cols-12 lg:gap-8 lg:px-14 lg:py-44">
         {/* Statement */}

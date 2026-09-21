@@ -254,7 +254,7 @@ export default function FeatureStorytelling() {
     <section
       id="direction"
       aria-labelledby="direction-title"
-      className="relative overflow-hidden border-t border-line bg-ink text-cream"
+      className="relative scroll-mt-20 overflow-hidden border-t border-line bg-ink text-cream"
     >
       <div className="mx-auto max-w-[1440px] px-6 py-24 md:px-10 md:py-32 lg:px-14 lg:py-40">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
