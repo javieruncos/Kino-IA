@@ -1,19 +1,21 @@
 import { useSyncExternalStore } from "react";
 
-function subscribeDesktop(callback) {
-  const query = window.matchMedia("(min-width: 1024px)");
+function subscribeDesktop(callback, queryText = "(min-width: 1024px)") {
+  const query = window.matchMedia(queryText);
   query.addEventListener("change", callback);
   return () => query.removeEventListener("change", callback);
 }
 
-function getDesktopSnapshot() {
-  return window.matchMedia("(min-width: 1024px)").matches;
+function getDesktopSnapshot(queryText = "(min-width: 1024px)") {
+  return window.matchMedia(queryText).matches;
 }
 
-export default function useIsDesktop() {
+export default function useIsDesktop(
+  queryText = "(min-width: 1024px)",
+) {
   return useSyncExternalStore(
-    subscribeDesktop,
-    getDesktopSnapshot,
+    (callback) => subscribeDesktop(callback, queryText),
+    () => getDesktopSnapshot(queryText),
     () => false,
   );
 }

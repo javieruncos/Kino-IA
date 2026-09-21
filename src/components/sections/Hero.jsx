@@ -24,7 +24,7 @@ export default function Hero() {
     <section
       id="hero"
       aria-labelledby="hero-title"
-      className="relative flex min-h-svh scroll-mt-20 flex-col overflow-hidden bg-ink text-cream lg:h-svh"
+      className="relative flex min-h-svh scroll-mt-20 flex-col overflow-hidden bg-ink text-cream lg:h-svh lg:portrait:h-auto lg:portrait:min-h-0"
     >
       {/* Capa 1 — Environment */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">

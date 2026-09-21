@@ -311,7 +311,9 @@ function StaticFlow({ animated }) {
 export default function GenerationWorkflow() {
   const reduce = useReducedMotion();
   const calm = Boolean(reduce);
-  const isDesktop = useIsDesktop();
+  const isDesktop = useIsDesktop(
+    "(min-width: 1024px) and (orientation: landscape)",
+  );
 
   return (
     <section
