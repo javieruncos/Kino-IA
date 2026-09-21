@@ -238,8 +238,8 @@ function StickyFlow() {
   return (
     <div ref={trackRef} className="relative">
       <div className="grid lg:grid-cols-12 lg:gap-10">
-        <div className="lg:col-span-7">
-          <div className="sticky top-[8vh] flex h-[84vh] flex-col">
+        <div className="lg:sticky lg:top-[36px] lg:col-span-7 lg:self-start">
+          <div className="flex h-[84vh] flex-col">
             <div className="relative flex-1 overflow-hidden rounded-xl border border-line bg-black shadow-[0_40px_120px_-30px_rgba(0,0,0,0.9)]">
               {STAGES.map((stage, i) => (
                 <SceneLayer
@@ -334,7 +334,7 @@ export default function GenerationWorkflow() {
     <section
       id="process"
       aria-labelledby="process-title"
-      className="relative overflow-hidden border-t border-line bg-ink text-cream"
+      className="relative overflow-clip border-t border-line bg-ink text-cream"
     >
       <div className="mx-auto max-w-[1440px] px-6 py-24 md:px-10 md:py-32 lg:px-14 lg:py-40">
         <motion.div
