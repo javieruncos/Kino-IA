@@ -4,6 +4,7 @@ import ProductStatement from "./components/sections/ProductStatement.jsx";
 import AICanvas from "./components/sections/AICanvas.jsx";
 import FeatureStorytelling from "./components/sections/FeatureStorytelling.jsx";
 import GenerationWorkflow from "./components/sections/GenerationWorkflow.jsx";
+import Footer from "./components/layout/Footer.jsx";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <AICanvas />
       <FeatureStorytelling />
       <GenerationWorkflow />
+      <Footer />
     </main>
   );
 }
