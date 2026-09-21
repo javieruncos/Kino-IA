@@ -67,10 +67,10 @@ export default function Hero() {
             id="hero-title"
             variants={rise}
             transition={{ duration: 0.7, ease: "easeOut" }}
-            className="mt-5 font-display text-[clamp(2.75rem,7vw,5.5rem)] font-medium uppercase leading-[0.95] tracking-[-0.02em]"
+            className="mt-5 font-display text-[clamp(2.75rem,5.5vw,4.25rem)] font-medium uppercase leading-[0.95] tracking-[-0.02em]"
           >
-            Turn an idea
-            <span className="block text-cream">into a scene.</span>
+            Convierte una idea
+            <span className="block text-cream">en una escena.</span>
           </motion.h1>
 
           <motion.p
@@ -78,8 +78,8 @@ export default function Hero() {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="mt-5 max-w-md text-base leading-relaxed text-muted md:text-lg"
           >
-            KINO is a cinematic control surface — direct camera, light and
-            motion, then generate the frame.
+            KINO es un entorno de dirección cinematográfica: controla
+            cámara, luz y movimiento, y luego genera el plano.
           </motion.p>
 
           <motion.div
@@ -91,14 +91,14 @@ export default function Hero() {
               href="#canvas"
               className="inline-flex items-center justify-center gap-2 rounded-full bg-acid px-7 py-3.5 font-display text-sm font-medium uppercase tracking-[0.08em] text-ink transition-colors hover:bg-acid-hover"
             >
-              Start directing
+              Empieza a dirigir
               <ArrowUpRight aria-hidden="true" className="h-4 w-4" />
             </a>
             <a
               href="#process"
               className="inline-flex items-center justify-center gap-2 px-2 py-3.5 font-mono text-xs tracking-[0.18em] text-muted transition-colors hover:text-cream"
             >
-              SEE HOW IT DIRECTS
+              MIRA CÓMO DIRIGE
               <span aria-hidden="true" className="text-acid">
                 →
               </span>
@@ -111,15 +111,15 @@ export default function Hero() {
             className="mt-8 flex flex-wrap gap-x-8 gap-y-3 border-t border-line pt-5 font-mono text-[11px] tracking-[0.18em] text-muted"
           >
             <div className="flex gap-2">
-              <dt className="text-white/30">STATUS</dt>
+              <dt className="text-white/30">ESTADO</dt>
               <dd className="text-acid">{heroMeta.status}</dd>
             </div>
             <div className="flex gap-2">
-              <dt className="text-white/30">FRAME</dt>
+              <dt className="text-white/30">PLANO</dt>
               <dd className="text-cream/80">{heroMeta.frame}</dd>
             </div>
             <div className="flex gap-2">
-              <dt className="text-white/30">RATE</dt>
+              <dt className="text-white/30">RITMO</dt>
               <dd className="text-cream/80">{heroMeta.fps}</dd>
             </div>
           </motion.dl>
@@ -131,7 +131,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 24, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.25 }}
-            className="relative w-full"
+            className="relative w-full lg:mx-auto lg:max-w-[560px]"
           >
             <motion.div
               animate={floatAnim}
@@ -145,7 +145,7 @@ export default function Hero() {
               {/* Console header */}
               <div className="flex items-center justify-between border-b border-line px-5 py-3">
                 <p className="font-mono text-[11px] tracking-[0.2em] text-muted">
-                  KINO <span className="text-white/25">/</span> PROJECT 01
+                  KINO <span className="text-white/25">/</span> PROYECTO 01
                 </p>
                 <p className="flex items-center gap-2 font-mono text-[11px] tracking-[0.2em] text-cream/80">
                   <motion.span
@@ -217,7 +217,7 @@ export default function Hero() {
 
                 <div className="absolute inset-x-4 bottom-1.5">
                   <div className="flex items-center justify-between font-mono text-[10px] tracking-[0.18em]">
-                    <span className="text-acid">GENERATING</span>
+                    <span className="text-acid">GENERANDO</span>
                     <span className="text-cream/70">78%</span>
                   </div>
                   <div className="mt-1.5 h-px w-full bg-white/15">
@@ -327,7 +327,7 @@ export default function Hero() {
               aria-hidden="true"
               className="absolute -left-3 top-16 hidden rounded-md border border-line bg-ink/90 px-3 py-2 font-mono text-[10px] tracking-[0.18em] text-cream/80 backdrop-blur md:block lg:-left-8"
             >
-              SCENE 01 <span className="text-acid">●</span>
+              ESCENA 01 <span className="text-acid">●</span>
             </div>
             <div
               aria-hidden="true"
@@ -339,21 +339,6 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Scroll cue */}
-      <div className="relative mx-auto flex w-full max-w-[1440px] items-center gap-4 px-6 pb-6 md:px-10 lg:px-14">
-        <p className="font-mono text-[10px] tracking-[0.22em] text-muted">
-          SCROLL — IDEA → DIRECTION → SCENE
-        </p>
-        <div aria-hidden="true" className="h-px w-24 bg-white/10">
-          <motion.div
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: calm ? 0 : 1.4, ease: "easeOut" }}
-            className="h-px w-full origin-left bg-acid/70"
-          />
-        </div>
-      </div>
     </section>
   );
 }

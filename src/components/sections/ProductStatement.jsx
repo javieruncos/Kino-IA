@@ -4,19 +4,19 @@ const STEPS = [
   {
     id: "01",
     name: "IDEA",
-    description: "The intention — an image described in words.",
+    description: "La intención: una imagen descrita con palabras.",
     active: false,
   },
   {
     id: "02",
-    name: "DIRECTION",
-    description: "The decisions — lens, light, movement, composition.",
+    name: "DIRECCIÓN",
+    description: "Las decisiones: lente, luz, movimiento, composición.",
     active: true,
   },
   {
     id: "03",
-    name: "SCENE",
-    description: "The result — a frame that feels directed.",
+    name: "ESCENA",
+    description: "El resultado: un plano que se siente dirigido.",
     active: false,
   },
 ];
@@ -50,20 +50,19 @@ export default function ProductStatement() {
             transition={{ duration: calm ? 0 : 0.6, ease: "easeOut" }}
             className="flex flex-wrap items-center justify-between gap-3 font-mono text-[11px] tracking-[0.22em] text-muted"
           >
-            <p>KINO / PHILOSOPHY — 01</p>
-            <p className="hidden sm:block">VISUAL LANGUAGE / KINO</p>
+            <p>KINO / FILOSOFÍA — 01</p>
           </motion.div>
 
           <motion.h2
             id="statement-title"
             variants={rise}
             transition={{ duration: calm ? 0 : 0.7, ease: "easeOut" }}
-            className="mt-8 font-display text-[clamp(2.25rem,5.5vw,4.75rem)] font-medium uppercase leading-[1.02] tracking-[-0.015em]"
+            className="mt-8 font-display text-[clamp(2.25rem,5vw,4.25rem)] font-medium uppercase leading-[1.02] tracking-[-0.015em]"
           >
-            Creative intent
-            <span className="block text-muted">becomes</span>
+            La intención creativa
+            <span className="block text-muted">se convierte en</span>
             <span className="block">
-              visual direction
+              dirección visual
               <span aria-hidden="true" className="text-acid">
                 .
               </span>
@@ -75,9 +74,9 @@ export default function ProductStatement() {
             transition={{ duration: calm ? 0 : 0.6, ease: "easeOut" }}
             className="mt-8 max-w-xl text-base leading-relaxed text-muted md:text-lg"
           >
-            KINO is a directing environment for generative scenes — you shape
-            camera, light, movement and atmosphere until the frame feels
-            intentional.
+            KINO es un entorno de dirección para escenas generativas:
+            defines cámara, luz, movimiento y atmósfera hasta que cada
+            plano se siente intencional.
           </motion.p>
 
           <motion.p
@@ -85,10 +84,10 @@ export default function ProductStatement() {
             transition={{ duration: calm ? 0 : 0.6, ease: "easeOut" }}
             className="mt-8 border-t border-line pt-5 font-mono text-[11px] tracking-[0.2em] text-white/40"
           >
-            CAMERA <span className="text-acid">·</span> LIGHT{" "}
-            <span className="text-acid">·</span> MOVEMENT{" "}
-            <span className="text-acid">·</span> COMPOSITION{" "}
-            <span className="text-acid">·</span> ATMOSPHERE
+            CÁMARA <span className="text-acid">·</span> LUZ{" "}
+            <span className="text-acid">·</span> MOVIMIENTO{" "}
+            <span className="text-acid">·</span> COMPOSICIÓN{" "}
+            <span className="text-acid">·</span> ATMÓSFERA
           </motion.p>
         </motion.div>
 
@@ -148,11 +147,6 @@ export default function ProductStatement() {
             transition={{ duration: calm ? 0 : 0.8, delay: calm ? 0 : 0.4 }}
             className="mt-6 flex items-center gap-2 font-mono text-[11px] tracking-[0.22em] text-muted"
           >
-            <span
-              aria-hidden="true"
-              className="inline-block h-1.5 w-1.5 rounded-full bg-acid"
-            />
-            DIRECTING MODE / ACTIVE
           </motion.p>
         </div>
       </div>

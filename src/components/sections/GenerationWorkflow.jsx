@@ -83,10 +83,10 @@ function StateDirected() {
   return (
     <div className="absolute inset-0">
       <SceneBase />
-      <Annotation className="left-5 top-12" label="LENS 35MM" accent />
-      <Annotation className="right-5 top-12" label="LIGHT NIGHT" />
-      <Annotation className="bottom-12 left-5" label="MOVE TRACKING" />
-      <Annotation className="bottom-12 right-5" label="GRID OFF" />
+      <Annotation className="left-5 top-12" label="LENTE 35MM" accent />
+      <Annotation className="right-5 top-12" label="LUZ NOCHE" />
+      <Annotation className="bottom-12 left-5" label="MOV: TRAVELLING" />
+      <Annotation className="bottom-12 right-5" label="SIN REJILLA" />
     </div>
   );
 }
@@ -96,7 +96,7 @@ function StateGenerated({ live }) {
     <div className="absolute inset-0">
       <SceneBase />
       <p className="absolute bottom-12 left-1/2 -translate-x-1/2 rounded-sm border border-acid/50 bg-black/60 px-3 py-1.5 font-mono text-[10px] tracking-[0.22em] text-acid">
-        GENERATED
+        GENERADO
       </p>
     </div>
   );
@@ -149,7 +149,7 @@ function StateFinal() {
     <div className="absolute inset-0">
       <SceneBase />
       <p className="absolute bottom-12 left-1/2 -translate-x-1/2 font-mono text-[10px] tracking-[0.24em] text-cream/85">
-        FINAL FRAME
+        PLANO FINAL
       </p>
       <p className="absolute right-5 top-2.5 font-mono text-[10px] tracking-[0.18em] text-cream/60">
         16:9
@@ -345,19 +345,19 @@ export default function GenerationWorkflow() {
           className="max-w-3xl"
         >
           <p className="font-mono text-[11px] tracking-[0.22em] text-muted">
-            KINO / WORKFLOW — 04
+            KINO / PROCESO — 04
           </p>
           <h2
             id="process-title"
             className="mt-6 font-display text-[clamp(2.25rem,5.5vw,4.5rem)] font-medium uppercase leading-[1.02] tracking-[-0.015em]"
           >
-            From prompt to final frame
+            Del prompt al plano final
             <span aria-hidden="true" className="text-acid">
               .
             </span>
           </h2>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-muted md:text-lg">
-            Five decisions stand between an idea and a frame.
+            Cinco decisiones separan una idea de un plano.
           </p>
         </motion.div>
 

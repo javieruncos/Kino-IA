@@ -205,7 +205,7 @@ function TechnicalDirection({ chapter }) {
   return (
     <div className="border-l border-line pl-5 lg:pl-6">
       <p className="font-mono text-[10px] tracking-[0.2em] text-white/35">
-        TECHNICAL DIRECTION
+        DIRECCIÓN TÉCNICA
       </p>
       {head ? (
         <p className="mt-3 font-mono text-[11px] tracking-[0.14em] text-cream/80">
@@ -409,18 +409,19 @@ export default function FeatureStorytelling() {
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
           <div className="lg:col-span-7">
             <p className="font-mono text-[11px] tracking-[0.22em] text-muted">
-              KINO / DIRECTION — 03
+              KINO / DIRECCIÓN — 03
             </p>
             <h2
               id="direction-title"
               className="mt-6 font-display text-[clamp(2.25rem,5.5vw,4.5rem)] font-medium uppercase leading-[1.02] tracking-[-0.015em]"
             >
-              Every frame
-              <span className="block text-muted">is a decision.</span>
+              Cada plano
+              <span className="block text-muted">es una decisión.</span>
             </h2>
           </div>
           <p className="max-w-sm self-end text-base leading-relaxed text-muted lg:col-span-4 lg:col-start-9">
-            Four dimensions a director controls — one continuous scene.
+            Cuatro dimensiones que controla la dirección, una sola escena
+            continua.
           </p>
         </div>
 

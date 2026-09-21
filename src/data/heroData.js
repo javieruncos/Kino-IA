@@ -1,7 +1,7 @@
 export const heroMeta = {
-  eyebrow: "KINO — AI CINEMATIC PLATFORM",
-  scene: "SCENE 01",
-  status: "DIRECTING",
+  eyebrow: "KINO — PLATAFORMA CINEMATOGRÁFICA IA",
+  scene: "ESCENA 01",
+  status: "DIRIGIENDO",
   frame: "FRAME 024",
   timecode: "00:00:12:08",
   fps: "24 FPS",
@@ -12,7 +12,7 @@ export const heroMeta = {
 
 export const heroPrompt = {
   label: "IDEA",
-  text: "Night chase through rain — sodium light, long lens, slow push-in.",
+  text: "Persecución nocturna bajo la lluvia: luz de sodio, lente larga, avance lento de cámara.",
 };
 
 export const heroLenses = [
@@ -24,7 +24,7 @@ export const heroLenses = [
 export const heroCamera = [
   { id: "aperture", label: "f/1.8" },
   { id: "light", label: "3200K" },
-  { id: "take", label: "TAKE 02" },
+  { id: "take", label: "TOMA 02" },
 ];
 
 export const heroScenes = [

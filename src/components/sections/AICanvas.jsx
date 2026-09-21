@@ -52,8 +52,8 @@ export default function AICanvas() {
               transition={{ duration: calm ? 0 : 0.7, ease: "easeOut" }}
               className="mt-6 font-display text-[clamp(2.25rem,5.5vw,4.5rem)] font-medium uppercase leading-[1.02] tracking-[-0.015em]"
             >
-              Direct the frame.
-              <span className="block text-muted">Shape the scene.</span>
+              Dirige el plano.
+              <span className="block text-muted">Da forma a la escena.</span>
             </motion.h2>
           </div>
           <motion.p
@@ -61,8 +61,8 @@ export default function AICanvas() {
             transition={{ duration: calm ? 0 : 0.6, ease: "easeOut" }}
             className="max-w-sm self-end text-base leading-relaxed text-muted lg:col-span-4 lg:col-start-9"
           >
-            Now we enter the directing environment — every decision lands
-            directly on the frame.
+            Ahora entras al entorno de dirección: cada decisión impacta
+            directamente en el plano.
           </motion.p>
         </motion.div>
 
@@ -77,9 +77,9 @@ export default function AICanvas() {
           {/* Top bar */}
           <div className="flex items-center justify-between gap-4 border-b border-line px-5 py-3">
             <p className="font-mono text-[11px] tracking-[0.2em] text-muted">
-              KINO <span className="text-white/25">/</span> PROJECT 01{" "}
+              KINO <span className="text-white/25">/</span> PROYECTO 01{" "}
               <span className="text-white/25">/</span>{" "}
-              <span className="text-cream/85">SCENE 04</span>
+              <span className="text-cream/85">ESCENA 04</span>
             </p>
             <p className="flex items-center gap-2 font-mono text-[11px] tracking-[0.2em] text-cream/80">
               <motion.span
@@ -92,7 +92,7 @@ export default function AICanvas() {
                 aria-hidden="true"
                 className="inline-block h-1.5 w-1.5 rounded-full bg-acid"
               />
-              DIRECTING
+              DIRIGIENDO
             </p>
           </div>
 
@@ -202,26 +202,26 @@ export default function AICanvas() {
               className="order-2 border-t border-line p-5 md:p-6 lg:order-1 lg:col-span-3 lg:border-r lg:border-t-0"
             >
               <p className="font-mono text-[11px] tracking-[0.22em] text-white/35">
-                SCENE DESCRIPTION
+                DESCRIPCIÓN DE ESCENA
               </p>
               <p className="mt-4 text-[15px] leading-relaxed text-cream/90">
-                A lone car moving through a rain-soaked city at night.
+                Un auto solo cruzando una ciudad empapada, de noche.
               </p>
               <div className="mt-6 space-y-4 border-t border-line pt-5">
                 <div>
                   <p className="font-mono text-[10px] tracking-[0.2em] text-white/35">
-                    ATMOSPHERE
+                    ATMÓSFERA
                   </p>
                   <p className="mt-1.5 font-mono text-[11px] tracking-[0.14em] text-cream/80">
-                    COLD / SUSPENSEFUL
+                    FRÍA / SUSPENSO
                   </p>
                 </div>
                 <div>
                   <p className="font-mono text-[10px] tracking-[0.2em] text-white/35">
-                    MOVEMENT
+                    MOVIMIENTO
                   </p>
                   <p className="mt-1.5 font-mono text-[11px] tracking-[0.14em] text-cream/80">
-                    SLOW TRACKING SHOT
+                    TRAVELLING LENTO
                   </p>
                 </div>
               </div>
@@ -237,11 +237,11 @@ export default function AICanvas() {
               className="order-3 border-t border-line p-5 md:p-6 lg:col-span-3 lg:border-l lg:border-t-0"
             >
               <p className="font-mono text-[11px] tracking-[0.22em] text-white/35">
-                DIRECTING
+                DIRECCIÓN
               </p>
               <div className="mt-4">
                 <p className="font-mono text-[10px] tracking-[0.2em] text-white/35">
-                  CAMERA
+                  CÁMARA
                 </p>
                 <div className="mt-2 flex gap-1.5">
                   {LENSES.map((lens) => (
@@ -261,7 +261,7 @@ export default function AICanvas() {
               <dl className="mt-5 space-y-3.5">
                 <div className="flex items-baseline justify-between gap-3">
                   <dt className="font-mono text-[10px] tracking-[0.2em] text-white/35">
-                    LENS
+                    LENTE
                   </dt>
                   <dd className="font-mono text-[11px] tracking-[0.14em] text-cream/80">
                     F/1.8
@@ -269,24 +269,24 @@ export default function AICanvas() {
                 </div>
                 <div className="flex items-baseline justify-between gap-3">
                   <dt className="font-mono text-[10px] tracking-[0.2em] text-white/35">
-                    LIGHT
+                    LUZ
                   </dt>
                   <dd className="font-mono text-[11px] tracking-[0.14em] text-cream/80">
-                    NIGHT / SOFT
+                    NOCHE / SUAVE
                   </dd>
                 </div>
                 <div className="flex items-baseline justify-between gap-3">
                   <dt className="font-mono text-[10px] tracking-[0.2em] text-white/35">
-                    MOTION
+                    MOVIMIENTO
                   </dt>
                   <dd className="font-mono text-[11px] tracking-[0.14em] text-cream/80">
-                    TRACKING
+                    TRAVELLING
                   </dd>
                 </div>
                 <div>
                   <div className="flex items-baseline justify-between gap-3">
                     <dt className="font-mono text-[10px] tracking-[0.2em] text-white/35">
-                      INTENSITY
+                      INTENSIDAD
                     </dt>
                     <dd className="font-mono text-[11px] tracking-[0.14em] text-acid">
                       72%
