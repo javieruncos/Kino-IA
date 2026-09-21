@@ -35,7 +35,7 @@ export const heroCamera = [
 ];
 
 export const heroScenes = [
-  { id: "01", label: "SCENE 01", active: true },
-  { id: "02", label: "SCENE 02", active: false },
-  { id: "03", label: "SCENE 03", active: false },
+  { id: "01", active: true },
+  { id: "02", active: false },
+  { id: "03", active: false },
 ];

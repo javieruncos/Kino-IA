@@ -172,7 +172,7 @@ export default function Hero() {
                     muted
                     loop
                     playsInline
-                    preload="auto"
+                    preload="metadata"
                     poster={heroMedia.poster}
                     aria-hidden="true"
                     className="absolute inset-0 h-full w-full object-cover object-center"

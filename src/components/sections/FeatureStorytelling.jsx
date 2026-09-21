@@ -1,4 +1,4 @@
-import { useRef, useState, useSyncExternalStore } from "react";
+import { useRef, useState } from "react";
 import {
   motion,
   useMotionValueEvent,
@@ -7,24 +7,7 @@ import {
   useSpring,
 } from "motion/react";
 import { CHAPTERS } from "../../data/featureStoryData";
-
-function subscribeDesktop(callback) {
-  const query = window.matchMedia("(min-width: 1024px)");
-  query.addEventListener("change", callback);
-  return () => query.removeEventListener("change", callback);
-}
-
-function getDesktopSnapshot() {
-  return window.matchMedia("(min-width: 1024px)").matches;
-}
-
-function useIsDesktop() {
-  return useSyncExternalStore(
-    subscribeDesktop,
-    getDesktopSnapshot,
-    () => false,
-  );
-}
+import useIsDesktop from "../../hooks/useIsDesktop.js";
 
 /* Frame cinematográfico por capítulo: fotografía real con la composición
    original intacta. */
@@ -131,6 +114,8 @@ function StickyStory() {
   const trackRef = useRef(null);
   const chapterRefs = useRef([]);
   const [active, setActive] = useState(0);
+  const reduce = useReducedMotion();
+  const calm = Boolean(reduce);
   const { scrollYProgress } = useScroll({
     target: trackRef,
     offset: ["start start", "end end"],
@@ -147,7 +132,7 @@ function StickyStory() {
 
   const goTo = (index) => {
     chapterRefs.current[index]?.scrollIntoView({
-      behavior: "smooth",
+      behavior: calm ? "auto" : "smooth",
       block: "center",
     });
   };

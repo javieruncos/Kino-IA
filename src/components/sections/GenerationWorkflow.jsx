@@ -1,4 +1,4 @@
-import { useRef, useState, useSyncExternalStore } from "react";
+import { useRef, useState } from "react";
 import {
   motion,
   useMotionValueEvent,
@@ -7,24 +7,7 @@ import {
   useSpring,
 } from "motion/react";
 import { SEED_PHRASE, STAGES } from "../../data/generationWorkflowData";
-
-function subscribeDesktop(callback) {
-  const query = window.matchMedia("(min-width: 1024px)");
-  query.addEventListener("change", callback);
-  return () => query.removeEventListener("change", callback);
-}
-
-function getDesktopSnapshot() {
-  return window.matchMedia("(min-width: 1024px)").matches;
-}
-
-function useIsDesktop() {
-  return useSyncExternalStore(
-    subscribeDesktop,
-    getDesktopSnapshot,
-    () => false,
-  );
-}
+import useIsDesktop from "../../hooks/useIsDesktop.js";
 
 /* Base nocturna compartida con el resto de KINO. */
 function SceneBase() {
