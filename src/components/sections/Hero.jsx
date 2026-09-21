@@ -3,6 +3,7 @@ import { Aperture, ArrowUpRight, Play } from "lucide-react";
 import {
   heroCamera,
   heroLenses,
+  heroMedia,
   heroMeta,
   heroPrompt,
   heroScenes,
@@ -17,7 +18,6 @@ export default function Hero() {
   const reduce = useReducedMotion();
   const calm = Boolean(reduce);
 
-  const floatAnim = calm ? { y: 0 } : { y: [0, -5, 0] };
   const blinkAnim = calm ? { opacity: 1 } : { opacity: [1, 0.25, 1] };
 
   return (
@@ -133,15 +133,7 @@ export default function Hero() {
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.25 }}
             className="relative w-full lg:mx-auto lg:max-w-[560px]"
           >
-            <motion.div
-              animate={floatAnim}
-              transition={
-                calm
-                  ? { duration: 0 }
-                  : { duration: 8, repeat: Infinity, ease: "easeInOut" }
-              }
-              className="relative overflow-hidden rounded-xl border border-line bg-surface shadow-[0_40px_120px_-30px_rgba(0,0,0,0.9)]"
-            >
+            <div className="relative overflow-hidden rounded-xl border border-line bg-surface shadow-[0_40px_120px_-30px_rgba(0,0,0,0.9)]">
               {/* Console header */}
               <div className="flex items-center justify-between border-b border-line px-5 py-3">
                 <p className="font-mono text-[11px] tracking-[0.2em] text-muted">
@@ -167,22 +159,27 @@ export default function Hero() {
 
               {/* Preview protagonista */}
               <div className="relative aspect-video overflow-hidden bg-black">
-                <div
-                  aria-hidden="true"
-                  className="absolute inset-0 bg-[radial-gradient(ellipse_60%_80%_at_70%_10%,rgba(64,110,120,0.55),transparent_60%),linear-gradient(180deg,var(--color-surface)_0%,var(--color-ink)_55%,black_100%)]"
-                />
-                <div
-                  aria-hidden="true"
-                  className="absolute left-[8%] right-[8%] top-[46%] h-px bg-gradient-to-r from-transparent via-acid/70 to-transparent blur-[0.5px]"
-                />
-                <div
-                  aria-hidden="true"
-                  className="absolute bottom-[26%] left-[12%] h-16 w-24 rounded-[50%] bg-black/70 blur-md"
-                />
-                <div
-                  aria-hidden="true"
-                  className="absolute bottom-[30%] left-[16%] h-10 w-10 rounded-full bg-elevated"
-                />
+                {calm ? (
+                  <img
+                    src={heroMedia.poster}
+                    alt=""
+                    aria-hidden="true"
+                    className="absolute inset-0 h-full w-full object-cover object-center"
+                  />
+                ) : (
+                  <video
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="auto"
+                    poster={heroMedia.poster}
+                    aria-hidden="true"
+                    className="absolute inset-0 h-full w-full object-cover object-center"
+                  >
+                    <source src={heroMedia.video} type="video/mp4" />
+                  </video>
+                )}
                 <div
                   aria-hidden="true"
                   className="absolute inset-x-0 top-0 h-8 bg-black"
@@ -320,7 +317,7 @@ export default function Hero() {
                   ))}
                 </div>
               </div>
-            </motion.div>
+            </div>
 
             {/* Metadata flotante mínima */}
             <div

@@ -26,168 +26,21 @@ function useIsDesktop() {
   );
 }
 
-/* Mundo compartido: misma calle nocturna en los cuatro capítulos. */
-function SceneBase() {
-  return (
-    <div aria-hidden="true" className="absolute inset-0">
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,#0b1418_0%,#060d10_48%,#020405_100%)]" />
-      <div className="absolute left-0 right-0 top-[58%] h-px bg-[rgba(255,176,66,0.5)] blur-[0.5px]" />
-      <div className="absolute left-[10%] right-[10%] top-[60%] h-10 bg-[radial-gradient(ellipse_50%_100%_at_50%_0%,rgba(255,176,66,0.14),transparent_70%)]" />
-      <div className="absolute bottom-[22%] left-1/2 h-7 w-40 -translate-x-1/2 rounded-[50%] bg-black blur-[3px]" />
-      <div className="absolute bottom-[24%] left-1/2 h-5 w-32 -translate-x-1/2 rounded-t-full bg-[#0d1a1f]" />
-      <div className="absolute inset-0 bg-[repeating-linear-gradient(105deg,transparent_0px,transparent_9px,rgba(255,255,255,0.025)_10px)]" />
-      <div className="absolute inset-x-0 top-0 h-9 bg-black" />
-      <div className="absolute inset-x-0 bottom-0 h-9 bg-black" />
-    </div>
-  );
-}
-
-function OverlayCamera() {
-  return (
-    <div aria-hidden="true" className="absolute inset-0">
-      <div className="absolute inset-x-[18%] inset-y-[16%] rounded-[2px] border border-white/20" />
-      <div className="absolute inset-x-[30%] inset-y-[26%] rounded-[2px] border border-white/10" />
-      <div className="absolute left-[8%] top-[12%] h-4 w-4 border-l border-t border-acid" />
-      <div className="absolute right-[8%] top-[12%] h-4 w-4 border-r border-t border-acid" />
-      <div className="absolute bottom-[12%] left-[8%] h-4 w-4 border-b border-l border-acid" />
-      <div className="absolute bottom-[12%] right-[8%] h-4 w-4 border-b border-r border-acid" />
-    </div>
-  );
-}
-
-function OverlayLight() {
-  return (
-    <div aria-hidden="true" className="absolute inset-0">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_45%_70%_at_82%_40%,rgba(255,190,110,0.22),transparent_65%)]" />
-      <div className="absolute inset-0 bg-[linear-gradient(100deg,rgba(2,4,5,0.55)_30%,transparent_70%)]" />
-    </div>
-  );
-}
-
-function OverlayMotion({ alive }) {
-  return (
-    <div aria-hidden="true" className="absolute inset-0 overflow-hidden">
-      <motion.div
-        animate={alive ? { x: [0, 30, 0] } : { x: 0 }}
-        transition={
-          alive
-            ? { duration: 6, repeat: Infinity, ease: "easeInOut" }
-            : { duration: 0 }
-        }
-        className="absolute bottom-[26%] left-[30%] h-px w-24 bg-gradient-to-r from-transparent via-cream/50 to-transparent"
-      />
-      <motion.div
-        animate={alive ? { x: [0, -14, 0] } : { x: 0 }}
-        transition={
-          alive
-            ? { duration: 6, repeat: Infinity, ease: "easeInOut" }
-            : { duration: 0 }
-        }
-        className="absolute bottom-[24%] left-1/2 h-5 w-32 -translate-x-1/2 rounded-t-full bg-[#12242a]"
-      />
-    </div>
-  );
-}
-
-function OverlayComposition() {
-  return (
-    <div aria-hidden="true" className="absolute inset-0">
-      <div className="absolute inset-y-0 left-1/3 w-px bg-white/15" />
-      <div className="absolute inset-y-0 left-2/3 w-px bg-white/15" />
-      <div className="absolute inset-x-0 top-1/3 h-px bg-white/15" />
-      <div className="absolute inset-x-0 top-2/3 h-px bg-white/15" />
-      <div className="absolute left-2/3 top-1/3 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-acid" />
-      <div className="absolute inset-x-[12%] top-[58%] h-px bg-acid/40" />
-    </div>
-  );
-}
-
-/* Capas concepto por capítulo: enriquecen SceneBase sin romper su universo.
-   Solo geometría mate + mono tenue. Sin glow, sin HUD. */
-function FrameCamera() {
-  return (
-    <div aria-hidden="true" className="absolute inset-0">
-      <div className="absolute inset-y-0 left-0 w-[22%] border-r border-white/5 bg-[linear-gradient(180deg,#0a1216_0%,#04080a_100%)]" />
-      <div className="absolute inset-y-0 right-0 w-[18%] border-l border-white/5 bg-[linear-gradient(180deg,#0a1216_0%,#04080a_100%)]" />
-      <div className="absolute left-1/2 top-[58%] h-[60%] w-px origin-top -rotate-[28deg] bg-white/[0.07]" />
-      <div className="absolute left-1/2 top-[58%] h-[60%] w-px origin-top rotate-[28deg] bg-white/[0.07]" />
-      <div className="absolute bottom-[30%] left-1/2 h-16 w-5 -translate-x-1/2 rounded-t-full border border-white/10 bg-black/80" />
-      <div className="absolute bottom-[10%] left-1/2 flex -translate-x-1/2 gap-3 font-mono text-[9px] tracking-[0.2em]">
-        <span className="text-acid/80">35</span>
-        <span className="text-white/30">50</span>
-        <span className="text-white/30">85</span>
-      </div>
-      <OverlayCamera />
-    </div>
-  );
-}
-
-function FrameLight() {
-  return (
-    <div aria-hidden="true" className="absolute inset-0">
-      <div className="absolute inset-y-0 left-0 w-[62%] bg-[linear-gradient(100deg,rgba(2,5,6,0.85)_0%,transparent_100%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_30%_60%_at_86%_45%,rgba(255,190,120,0.2),transparent_65%)]" />
-      <div className="absolute right-[14%] top-[18%] h-[46%] w-1 bg-[rgba(255,190,120,0.5)] blur-[2px]" />
-      <div className="absolute bottom-[28%] left-[58%] h-20 w-6 rounded-t-full bg-[#0a0f12]" />
-      <div className="absolute bottom-[28%] left-[58%] ml-6 h-20 w-px bg-[rgba(255,200,140,0.6)]" />
-      <div className="absolute bottom-[24%] right-[8%] h-px w-24 bg-[linear-gradient(90deg,transparent,rgba(255,190,120,0.35))]" />
-      <OverlayLight />
-    </div>
-  );
-}
-
-function FrameMotion({ alive }) {
-  return (
-    <div aria-hidden="true" className="absolute inset-0 overflow-hidden">
-      <div className="absolute bottom-[38%] left-[12%] h-px w-40 bg-gradient-to-r from-transparent via-cream/25 to-transparent" />
-      <motion.div
-        animate={alive ? { x: [0, 48, 0] } : { x: 0 }}
-        transition={
-          alive
-            ? { duration: 7, repeat: Infinity, ease: "easeInOut" }
-            : { duration: 0 }
-        }
-        className="absolute bottom-[32%] left-[24%] h-px w-56 bg-gradient-to-r from-transparent via-cream/50 to-transparent"
-      />
-      <div className="absolute bottom-[27%] left-[38%] h-px w-28 bg-gradient-to-r from-transparent via-cream/20 to-transparent" />
-      <div className="absolute bottom-[24%] left-1/2 h-5 w-32 -translate-x-1/2 rounded-t-full bg-[#0d1a1f] opacity-40" />
-      <div className="absolute bottom-[24%] left-1/2 h-5 w-32 -translate-x-[calc(50%-2rem)] rounded-t-full bg-[#12242a]" />
-      <OverlayMotion alive={alive} />
-    </div>
-  );
-}
-
-function FrameComposition() {
-  return (
-    <div aria-hidden="true" className="absolute inset-0">
-      <div className="absolute inset-y-0 left-0 w-[55%] bg-[linear-gradient(90deg,rgba(2,5,6,0.6),transparent)]" />
-      <div className="absolute left-2/3 top-1/3 h-14 w-9 -translate-x-1/2 -translate-y-1/2 rounded-[2px] border border-white/15 bg-black/60" />
-      <div className="absolute left-[8%] top-[12%] h-4 w-4 border-l border-t border-white/20" />
-      <div className="absolute right-[8%] top-[12%] h-4 w-4 border-r border-t border-white/20" />
-      <div className="absolute bottom-[12%] left-[8%] h-4 w-4 border-b border-l border-white/20" />
-      <div className="absolute bottom-[12%] right-[8%] h-4 w-4 border-b border-r border-white/20" />
-      <OverlayComposition />
-    </div>
-  );
-}
-
-/* Frame cinematográfico por capítulo: placeholder CSS preparado para
-   recibir una imagen real sin cambiar el layout.
-   FUTURO: reemplazar las capas CSS por
-   <img src={chapter.image} alt={chapter.imageAlt}
-     className="absolute inset-0 h-full w-full object-cover"
-     loading="lazy" decoding="async" /> */
-function CinematicFrame({ chapter, alive, aspect = "aspect-[21/9]" }) {
+/* Frame cinematográfico por capítulo: fotografía real con la composición
+   original intacta. */
+function CinematicFrame({ chapter, aspect = "aspect-[21/9]" }) {
   return (
     <figure>
       <div
         className={`relative w-full ${aspect} overflow-hidden rounded-xl border border-line bg-black`}
       >
-        <SceneBase />
-        {chapter.id === "camera" ? <FrameCamera /> : null}
-        {chapter.id === "light" ? <FrameLight /> : null}
-        {chapter.id === "motion" ? <FrameMotion alive={alive} /> : null}
-        {chapter.id === "composition" ? <FrameComposition /> : null}
+        <img
+          src={chapter.image}
+          alt={chapter.imageAlt}
+          loading="lazy"
+          decoding="async"
+          className="absolute inset-0 h-full w-full object-cover object-center"
+        />
       </div>
       <figcaption className="mt-3 font-mono text-[10px] tracking-[0.2em] text-white/35">
         REF / {chapter.name} — {chapter.meta[chapter.meta.length - 1]}
@@ -261,7 +114,6 @@ function StaticStory({ animated }) {
           <div className="mt-8 md:mt-10 lg:mt-0">
             <CinematicFrame
               chapter={chapter}
-              alive={animated}
               aspect="aspect-video"
             />
           </div>
@@ -382,7 +234,6 @@ function StickyStory() {
               <div className="col-span-7">
                 <CinematicFrame
                   chapter={chapter}
-                  alive={active === i}
                   aspect="aspect-video"
                 />
               </div>

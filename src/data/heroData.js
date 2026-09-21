@@ -1,3 +1,6 @@
+import heroVideo from "../assets/Rain_falling_on_asphalt_20260921153553.mp4";
+import heroPoster from "../assets/hero.png";
+
 export const heroMeta = {
   eyebrow: "KINO — PLATAFORMA CINEMATOGRÁFICA IA",
   scene: "ESCENA 01",
@@ -10,6 +13,10 @@ export const heroMeta = {
   progress: 0.78,
 };
 
+export const heroMedia = {
+  video: heroVideo,
+  poster: heroPoster,
+};
 export const heroPrompt = {
   label: "IDEA",
   text: "Persecución nocturna bajo la lluvia: luz de sodio, lente larga, avance lento de cámara.",
